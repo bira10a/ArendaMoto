@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import LogoMoto from './logo-moto-white.png';
 import LogoMoto from './logo-moto.svg';
 import {Container} from '../styles/Global';
 

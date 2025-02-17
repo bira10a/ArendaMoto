@@ -1,19 +1,16 @@
-import styled from "styled-components"
+import styled, {keyframes} from "styled-components"
 import {Section, Container} from '../styles/Global';
 import mainBg from './mainBg.jpg';
 
-const SectionBlock = styled(Section)`
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
 
-    /* &::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-color: #f7f7f7d4;
-    } */
+const FadeInAnimation = keyframes`
+    0% {color: white; background: rgba(248, 35, 35, 0.2)}
+    50% {color: #a53737; background: rgba(255, 255, 255, 0.2)}
+    100% {color: white; background: rgba(248, 35, 35, 0.2)}
+`;
+
+const SectionBlock = styled(Section)`
+    position: relative;
 
     & > div {
         height: 100dvh;
@@ -39,19 +36,20 @@ const SectionBlock = styled(Section)`
         }
 
         button {
-            font-family: "Gentium Book Plus", serif;
+            font-family: "Pattaya", serif;
             font-size: 25px;
             padding: 20px;
-            color: white;
+            /* color: white; */
             margin-left: 10%;
 
-            background: rgba(255, 255, 255, 0.2);
+            /* background: rgba(255, 255, 255, 0.2); */
             border-radius: 16px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(3.3px);
+            animation: ${FadeInAnimation} 5s linear infinite;
         }
     }
-`
+    `
 
 const Main = () => {
     return (
@@ -65,3 +63,5 @@ const Main = () => {
     )
 }
 export {Main}
+
+// https://www.behance.net/gallery/179588321/dizajn-sajta-dlja-prokata-motociklov-Landing-page?ysclid=m72ym9ydt5695916431

@@ -10,7 +10,10 @@ const Container = styled.div`
 
 const Section = styled.section`
     height: 100dvh;
-    width: 100dvw;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 `
 
 export {Container, Section}
