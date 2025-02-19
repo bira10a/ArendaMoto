@@ -1,68 +1,60 @@
 import styled from 'styled-components';
 import {Section, Container} from '../styles/Global';
 import BgImg from './moto1.jpg';
+// import Scooter from './Scooter-W.svg';
 import Scooter from './Scooter.svg';
 
-
-// const images = [
-//     { src: 'http://placehold.it/100x100/76BD22', alt: 'Your description here 1' }, 
-//     { src: 'http://placehold.it/100x100/76BD23', alt: 'Your description here 2' }
-//   ];
-  
-//   // ...
-  
-//   {images.map(function(imageProps) {
-//     return (
-//       <li key={ imageProps.src }>
-//         <img src={ imageProps.src } alt={ imageProps.alt } />
-//       </li>
-//     );
-//   })}
-
-
-//   <ul className="product-gallery-thumbs__list">
-//    {images.map(function(image, imageIndex){
-//       return <img key={ imageIndex } src={ image } />
-//    })}
-// </ul>
+interface TypeCartImages {
+    src: string,
+    alt: string,
+    title: string,
+    text: string
+}
 
 
 
 const ContainerBlock = styled(Container)`
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     height: 100dvh;
+    padding-top: 50px;
+
+    h2 {
+        font-family: "Marck Script", serif;
+        font-size: 50px;
+        margin-bottom: 30px;
+    }
 `
 
 const FlexList = styled.ul`
-   width: 30%;
+   width: 35%;
    display: flex;
    flex-direction: column;
    align-items: flex-end;
    gap: 60px;
-
-   img {
-    svg {
-        fill: white;
-        stroke: white;
-
-    }
-   }
 `
 
 const Items = styled.li`
-    max-width: 350px;
-    width: 100%;
+    display: grid;
+    align-items: center;
+    column-gap: 10px;
     text-align: end;
     
-
     & > p ~ p {
         opacity: 0.7;
+        grid-row: 2;
     }
 
-    &.textLeft {
+    &.LeftItems:nth-child(2) {
         text-align: start;
+    }
+
+    img {
+        grid-column: 3;
+        grid-row: 1 / 3;
+        width: 75px;
+        height: 55px;
     }
    
 `
@@ -76,42 +68,45 @@ const ItemsRevers = styled(Items)`
 `
 
 const OurAdvantages = () => {
+
+    const images: TypeCartImages[] = [
+        { src: '/src/components/OurAdvantages/Helmet.svg', alt: 'Helmet', title: 'Шлем и перчатки бесплатно', text: 'Вся необходимая экипировка предоставляется Вам бесплатно' }, 
+
+        { src: '/src/components/OurAdvantages/Money.svg', alt: 'Money', title: 'Удобная оплата', text: 'Мы принимаем наличные, карты и любые переводы.' }, 
+
+        { src: '/src/components/OurAdvantages/Sale.svg', alt: 'Sale', title: 'Скидки и акции', text: 'Даём скидку 5 % тем, кто подписан на нас в Instagram, Telegram.' },
+
+        { src: '/src/components/OurAdvantages/Deposit.svg', alt: 'Deposit', title: 'Минимальный залог', text: 'Мы не требуем оставлять "космические" залоги, для того, чтобы насладится катанием на наших мопедах.' }, 
+
+        { src: '/src/components/OurAdvantages/Scooter.svg', alt: 'Scooter', title: 'Широкий выбор', text: 'Даём скидку 5 % тем, кто подписан на нас в Instagram, Telegram.' }, 
+
+        { src: '/src/components/OurAdvantages/Balaclava.svg', alt: 'Balaclava', title: 'Бесплатные балаклавы', text: 'Всегда чистые балаклавы в наличии. Мы заботимся о Вас.' }
+      ];
+
+    // const imagesRight: TypeCartImages[] = [
+    //     { src: '/src/components/OurAdvantages/Deposit.svg', alt: 'Deposit', title: 'Минимальный залог', text: 'Мы не требуем оставлять "космические" залоги, для того, чтобы насладится катанием на наших мопедах.' }, 
+
+    //     { src: '/src/components/OurAdvantages/Scooter.svg', alt: 'Scooter', title: 'Широкий выбор', text: 'Даём скидку 5 % тем, кто подписан на нас в Instagram, Telegram.' }, 
+
+    //     { src: '/src/components/OurAdvantages/Balaclava.svg', alt: 'Balaclava', title: 'Бесплатные балаклавы', text: 'Всегда чистые балаклавы в наличии. Мы заботимся о Вас.' }
+    //   ];
+  
     return (
-        <Section style={{backgroundImage: `url(${BgImg})`}}>
+        <Section style={{backgroundImage: `url(${BgImg})`, backgroundAttachment: 'fixed'}}>
             <ContainerBlock>
+                <h2>Наши преимущества</h2>
                 <FlexList>
-                    <Items>
-                        <p>Шлем и перчатки бесплатно</p>
-                        <p>Вся необходимая экипировка предоставляется Вам бесплатно.</p>
-                        <img src={Scooter} alt="" />
-                    </Items>
-                    <Items className='textLeft'>
-                        <p>Удобная оплата</p>
-                        <p>Мы принимаем наличные, карты и любые переводы.</p>
-                        <img src="" alt="" />
-                    </Items>
-                    <Items>
-                        <p>Скидки и акции</p>
-                        <p>Даём скидку 5 % тем, кто подписан на нас в Instagram, Telegram.</p>
-                        <img src="" alt="" />
-                    </Items>
-                </FlexList>
-                <FlexList>
-                    <ItemsRevers>
-                        <p>Минимальный залог</p>
-                        <p>Мы не требуем оставлять "космические" залоги, для того, чтобы насладится катанием на наших мопедах.</p>
-                        <img src="" alt="" />
-                    </ItemsRevers>
-                    <ItemsRevers className='textRight'>
-                        <p>Широкий выбор</p>
-                        <p>Мы предоставляем широкий выбор мопедов раззной мощности.</p>
-                        <img src="" alt="" />
-                    </ItemsRevers>
-                    <ItemsRevers>
-                        <p>бесплатные балаклавы</p>
-                        <p>Всегда чистые балаклавы в наличии. Мы заботимся о Вас.</p>
-                        <img src="" alt="" />
-                    </ItemsRevers>                    
+                    {
+                        images.map(i => {
+                            return (
+                                <Items>
+                                    <p>{i.title}</p>
+                                    <p>{i.text}</p>
+                                    <img src={i.src} alt={i.alt} width='75' height='55' />
+                                </Items>
+                            )
+                        })
+                    }
                 </FlexList>
             </ContainerBlock>
         </Section>
