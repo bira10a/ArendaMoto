@@ -2,6 +2,10 @@ import styled, {keyframes} from "styled-components"
 import {Section, Container} from '../styles/Global';
 import mainBg from './mainBg.jpg';
 
+import { Reserve } from "./reserve";
+
+import { useState } from "react";
+
 
 const FadeInAnimation = keyframes`
     0% {color: white; background: rgba(248, 35, 35, 0.2)}
@@ -52,12 +56,22 @@ const SectionBlock = styled(Section)`
     `
 
 const Main = () => {
+    const [reserve, setReserve] = useState(false);
+
+    const changeReserve = () => {
+        setReserve(i => !i)
+    }
+
     return (
         <SectionBlock style={{backgroundImage: `url(${mainBg})`}}>
             <Container>
+
+                {/* <Reserve /> */}
+                { reserve ? <Reserve /> : null }
+
                 <h1>Прокат мопедов</h1>
                 <div>Получите самые яркие эмоции и комфорт по самым выгодным ценам в Новороссийске</div>
-                <button>Забронировать</button>
+                <button onClick={changeReserve}>Забронировать</button>
             </Container>
         </SectionBlock>
     )
