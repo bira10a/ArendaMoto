@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import LogoMoto from './logo-moto.svg';
 import {Container} from '../styles/Global';
+import {NavLink} from 'react-router';
 
 
 
@@ -31,29 +32,22 @@ const Containerblock = styled(Container)`
                     transition: color 0.3s linear, opacity 0.3s linear, border-color 0.3s linear;
                     outline: transparent;
                     border-top: 3px solid transparent;
+                    border-bottom: 3px solid transparent;
 
-                    &::after {
-                        content: '';
-                        display: block;
-                        border-bottom: solid 3px #ab73e7;  
-                        transform: scaleX(0);  
-                        transition: transform 0.3s ease-in-out;
-                        transform-origin:100% 50%;
+                    &.active {
+                        transform: scale(1.3);
+                        border-color: #ab73e7;
+                        color: #ab73e7;
                     }
 
                     &:hover {
                         color: #ab73e7;
-
-                        &::after {
-                            transform: scaleX(1);
-                            transform-origin: 0 50%;
-                        }
                     }
 
                     &:focus {
                         transform: scale(1.3);
                         border-color: #ab73e7;
-                        color: #ab73e7
+                        color: #ab73e7;
                     }
 
                     &:active {
@@ -84,15 +78,15 @@ const Header = () => {
             <Containerblock>
                 <nav>
                     <ul>
-                        <li><a href="#">О нас</a></li>
-                        <li><a href="#">Цены</a></li>
-                        <li><a href="#">Мотоциклы</a></li>
+                        <li><NavLink to="/">О нас</NavLink></li>
+                        <li><NavLink to="/1">Цены</NavLink></li>
+                        <li><NavLink to="/moto">Мотоциклы</NavLink></li>
                     </ul>
                     <img />
                     <ul>
-                        <li><a href="#">Условия</a></li>
-                        <li><a href="#">Оплата</a></li>
-                        <li><a href="#">Контакты</a></li>
+                        <li><NavLink to="/asd">Условия</NavLink></li>
+                        <li><NavLink to="/ads">Оплата</NavLink></li>
+                        <li><NavLink to="/31">Контакты</NavLink></li>
                     </ul>
                 </nav>               
             </Containerblock>
