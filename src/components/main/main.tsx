@@ -13,6 +13,7 @@ const FadeInAnimation = keyframes`
     100% {color: white; background: rgba(248, 35, 35, 0.2)}
 `;
 
+
 const SectionBlock = styled(Section)`
     position: relative;
 
@@ -51,6 +52,14 @@ const SectionBlock = styled(Section)`
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(3.3px);
             animation: ${FadeInAnimation} 5s linear infinite;
+        }
+
+        h1 {
+            background-image: linear-gradient(
+                to right, #f35959, #2e01f5
+            );
+            background-clip: text;
+            color: transparent;
         }
     }
     `

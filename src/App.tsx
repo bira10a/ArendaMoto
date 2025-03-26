@@ -6,6 +6,7 @@ import {Routes, Route, Link} from 'react-router';
 import { Home } from "./pages/home";
 import { Moto } from "./pages/moto";
 import { NotFoundPage } from "./pages/NotFoundPage";
+import { Layout } from "./components/Layout";
 
 const App = () => {
   return (
@@ -13,9 +14,11 @@ const App = () => {
       <Header />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/moto" element={<Moto />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="/" element={ <Layout /> }>
+          <Route index element={<Home />} />
+          <Route path="moto" element={<Moto />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
       </Routes>
 
 

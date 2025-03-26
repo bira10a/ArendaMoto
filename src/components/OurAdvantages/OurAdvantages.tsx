@@ -25,6 +25,12 @@ const ContainerBlock = styled(Container)`
         font-family: "Marck Script", serif;
         font-size: 50px;
         margin-bottom: 30px;
+
+        background-image: linear-gradient(
+                to right, #f35959, #2e01f5
+            );
+            background-clip: text;
+            color: transparent;
     }
 `
 

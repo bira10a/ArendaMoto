@@ -4,7 +4,6 @@ const Home = () => {
     <main>
       <Main />
       <OurAdvantages />
-      <Main />
     </main>
   )
 }
