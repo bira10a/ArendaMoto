@@ -4,11 +4,13 @@ import { Outlet } from "react-router";
 const Layout = () => {
      return (
          <>
-             <Header />
+                <Header />
 
-             <Outlet />
+            <main>
+                <Outlet />
+            </main>
 
-             <Parking />
+                <Parking />
          </>
      )
 }
