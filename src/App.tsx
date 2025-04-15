@@ -11,17 +11,27 @@ import { MotoAsync } from "./pages/Moto/Moto.async";
 import { NotFoundPageAsync } from "./pages/NotFoundPage/NotFoundPage.async";
 
 
-
 const App = () => {
   return (
     <div>
       <Routes>
         <Route path="/" element={ <Layout /> }>
-          {/* <Suspense fallback={<div>Loading...</div>}> */}
-            <Route index element={<HomeAsync />} />
-            <Route path="moto" element={<MotoAsync />} />
-            <Route path="*" element={<NotFoundPageAsync />} />
-          {/* </Suspense> */}
+            <Route index element={
+              <Suspense fallback={<div>Loading HomeAsync...</div>}>
+                <HomeAsync />
+              </Suspense>
+             } />
+            
+            <Route path="moto" element={
+              <Suspense fallback={<div>Loading MotoAsync...</div>}>
+                <MotoAsync />
+              </Suspense>
+            } />
+            <Route path="*" element={
+              <Suspense fallback={<div>Loading NotFoundPageAsync...</div>}>
+                <NotFoundPageAsync />
+              </Suspense>
+            } />
         </Route>
       </Routes>
     </div>
