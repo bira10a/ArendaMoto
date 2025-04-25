@@ -1,5 +1,6 @@
 import './app.css';
 import './Reset.css';
+import './styles/index.scss';
 import {Routes, Route} from 'react-router';
 import { Suspense } from 'react';
 import { Layout } from "./components/Layout";
@@ -13,27 +14,23 @@ import { NotFoundPageAsync } from "./pages/NotFoundPage/NotFoundPage.async";
 
 const App = () => {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={ <Layout /> }>
-            <Route index element={
-              <Suspense fallback={<div>Loading HomeAsync...</div>}>
+    <div className='app'>
+      <Suspense fallback={<div>Loading 00007777...</div>}>
+        <Routes>
+          <Route path="/" element={ <Layout /> }>
+              <Route index element={
                 <HomeAsync />
-              </Suspense>
-             } />
-            
-            <Route path="moto" element={
-              <Suspense fallback={<div>Loading MotoAsync...</div>}>
+              } />
+              
+              <Route path="moto" element={
                 <MotoAsync />
-              </Suspense>
-            } />
-            <Route path="*" element={
-              <Suspense fallback={<div>Loading NotFoundPageAsync...</div>}>
+              } />
+              <Route path="*" element={
                 <NotFoundPageAsync />
-              </Suspense>
-            } />
-        </Route>
-      </Routes>
+              } />
+          </Route>
+        </Routes>
+      </Suspense>
     </div>
   )
 }
