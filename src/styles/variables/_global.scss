@@ -1,0 +1,258 @@
+html,
+body {
+  height: 100%;
+}
+
+// НАСТРОЙКИ ===============================================================================================================================================================================================================================================================================================
+// Минимальная ширина страницы
+$minWidth: 320;
+// Ширина полотна (макета)
+$maxWidth: 1920;
+// Ширина ограничивающего контейнера (0 = нет ограничения)
+$maxWidthContainer: 1600;
+// Общий отступ у контейнера
+// (30 = по 15px слева и справа, 0 = нет отступа)
+$containerPadding: 40;
+
+// Ширина срабатывания первого брейкпоинта
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Брейк-поинты
+$pc: em($containerWidth); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$tablet: em(991.98); // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: em(767.98); // Телефоны L
+$mobileSmall: em(479.98); // Телефоны S
+
+// Тип адаптива:
+// 1 = отзывчивость (у контейнера нет брейкпоинтов),
+// 2 = по брейк-поинтам (контейнер меняет свою ширину по брейк-поинтам)
+$responsiveType: 1;
+
+// Ограничивающий контейнер ======================================================================================================================================================================================================================
+
+/*
+(i) Стили будут применяться ко 
+всем классам содержащим *__container
+Например header__container, main__container и т.д.
+Снипет (HTML): cnt
+*/
+@if ($responsiveType==1) {
+
+  // Отзывчивая
+  [class*="__container"] {
+    @if ($maxWidthContainer>0) {
+      max-width: rem($maxWidthContainer);
+      box-sizing: border-box;
+      margin: 0 auto;
+    }
+
+    @if ($containerPadding>0) {
+      padding: 0 rem(math.div($containerPadding, 2));
+    }
+  }
+}
+
+@else {
+
+  // По брейк-поинтам
+  [class*="__container"] {
+    margin: 0 auto;
+
+    @if ($maxWidthContainer>0) {
+      max-width: rem($maxWidthContainer);
+      box-sizing: content-box;
+    }
+
+    @else {
+      @if ($containerPadding>0) {
+        padding: 0 rem(math.div($containerPadding, 2));
+      }
+    }
+
+    @media (max-width: $pc) {
+      max-width: rem(970);
+    }
+
+    @media (max-width: $tablet) {
+      max-width: rem(750);
+    }
+
+    @media (max-width: $mobile) {
+      max-width: none;
+
+      @if ($containerPadding>0 and $maxWidthContainer>0) {
+        padding: 0 rem(math.div($containerPadding, 2));
+      }
+    }
+  }
+}
+
+body {
+  font-family: 'Philosopher', sans-serif;
+  @include adaptiveValue("font-size", 20, 16);
+  line-height: 1.4;
+  background-color: $mainBgColor;
+  display: flex;
+  flex-direction: column;
+
+  // &.black-theme {
+  //   background-color: #000;
+  //   color: #fff0bd;
+  // }
+}
+
+.body--lock {
+  overflow: hidden;
+}
+
+.app {
+  color: var(--default);
+}
+
+
+.main {
+  flex-grow: 1;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.section {
+  @include adaptiveValue("padding-top", 60, 20);
+  @include adaptiveValue("padding-bottom", 60, 20);
+}
+
+
+[class*="__link"] {
+  padding: 10px;
+  border-bottom: 1px solid transparent;
+  border-radius: 30px;
+  transition: border-color 0.3s linear, color 0.3s linear;
+  outline: transparent;
+
+  &:focus {
+    border-color: $accent;
+  }
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+.title {
+  position: relative;
+  font-family: 'Oswald-bold', sans-serif;
+  @include adaptiveValue("font-size", 32, 16);
+
+  &::before {
+    @include pseudo;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $accent;
+  }
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  z-index: 30;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s linear, visibility 0.4s linear;
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 10px 30px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    max-width: rem(1200);
+    padding: 15px;
+    background-color: rgba(93, 98, 93, 0.621);
+  }
+
+  &__close {
+    align-self: flex-end;
+    padding: 15px;
+    background-color: $accent;
+    border-radius: 50%;
+  }
+
+  &__img {
+    position: relative;
+    padding: 0 0 85% 0;
+  }
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.loader {
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
+  inset: 0;
+  background-color: $default;
+  z-index: 100;
+  display: flex;
+  text-align: center;
+
+  &__logo {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 150px;
+  }
+
+  &__title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    z-index: 101;
+  }
+
+  &__item {
+    flex: 1 1 auto;
+    background: $accent;
+    border-right: 1px solid black;
+    z-index: 102;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+}

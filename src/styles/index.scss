@@ -1,3 +1,12 @@
-.app {
+@use 'sass:math';
+@import './variables/vars';
+@import 'fonst';
+@import 'reset';
+@import './variables/mixins';
+@import './variables/global';
+@import './themes/dark';
+@import './themes/normal';
 
-}
+// .app {
+//     color: var(--default);
+// }

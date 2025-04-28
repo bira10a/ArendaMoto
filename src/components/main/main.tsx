@@ -81,6 +81,7 @@ const Main = () => {
                 <h1>Прокат мопедов</h1>
                 <div>Получите самые яркие эмоции и комфорт по самым выгодным ценам в Новороссийске</div>
                 <button onClick={changeReserve}>Забронировать</button>
+                {/* <button onClick={changeThemes}>Themes ++</button> */}
             </Container>
         </SectionBlock>
     )
