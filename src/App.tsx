@@ -12,14 +12,15 @@ import { NotFoundPageAsync } from "./pages/NotFoundPage/NotFoundPage.async";
 
 
 const App = () => {
-  // const [theme, setTheme] = useState(false);
+  const [theme, setTheme] = useState(false);
 
-  // const changeThemes = () => {
-  //   setTheme(i => !i)
-  // }
+  const changeThemes = () => {
+    setTheme(theme => !theme)
+  }
 
   return (
-    <div className='app dark'>
+    <div className={theme ? 'app dark' : 'app'}>
+      <button onClick={changeThemes}>++++++</button>
       <Suspense fallback={<div>Loading 00007777...</div>}>
         <Routes>
           <Route path="/" element={ <Layout /> }>
