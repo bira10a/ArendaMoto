@@ -3,6 +3,7 @@ import {Routes, Route} from 'react-router';
 import { Suspense, useContext, useState } from 'react';
 import { ThemeContext } from './themes/ThemeContext';
 import { Themes } from './themes/ThemeContext';
+import { useTheme } from './themes/useTheme';
 
 import { Layout } from "./components/Layout";
 // import { Home } from "./pages/Home/Home";
@@ -14,11 +15,7 @@ import { NotFoundPageAsync } from "./pages/NotFoundPage/NotFoundPage.async";
 
 
 const App = () => {
-  const {theme, setTheme} = useContext(ThemeContext)
-
-  const toggleTheme = () => {
-    setTheme(theme === Themes.LIGHT ? Themes.DARK : Themes.LIGHT)
-  }
+  const {theme, toggleTheme} = useTheme();
 
   return (
     <div className={`app ${theme} `}>
