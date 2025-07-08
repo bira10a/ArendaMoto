@@ -1,13 +1,12 @@
 import './styles/index.scss';
 import {Routes, Route} from 'react-router';
 import { Suspense } from 'react';
-import { useTheme } from './themes/useTheme';
+import { useTheme } from './providers/ThemeProvider';
 
-import { Layout } from "./components/Layout";
-import { HomeAsync } from './pages/Home/Home.async';
-import { MotoAsync } from "./pages/Moto/Moto.async";
-import { NotFoundPageAsync } from "./pages/NotFoundPage/NotFoundPage.async";
-
+import { Layout } from "../components/Layout";
+import { HomeAsync } from '../pages/Home/Home.async';
+import { MotoAsync } from "../pages/Moto/Moto.async";
+import { NotFoundPageAsync } from "../pages/NotFoundPage/NotFoundPage.async";
 
 const App = () => {
   const {theme, toggleTheme} = useTheme();
